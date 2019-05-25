@@ -1,0 +1,32 @@
+#logo-text{
+    font-size:80px
+}
+#uploadBtn{
+    height: 50px;
+    width: 200px;
+    font-size: 18px;
+    background-color:transparent;
+    font-weight: 600;
+    color:#4D229A;
+    transition: .2s ease;
+    border-radius: 0;
+    border:2px solid #4D229A;
+}
+#uploadBtn:hover{
+    background-color: #4D229A;
+    color:white;
+}
+
+.custom-file{
+    width:50%;
+    transition:.2s ease-out;
+}
+.avatar-card{
+    border:none;
+    border-radius: 0;
+    border-top:2px solid #4D229A;
+    border-bottom:2px solid #4D229A
+}
+.avatar-img{
+    border-radius: 0;
+}

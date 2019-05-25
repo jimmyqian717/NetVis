@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <section id = "home" class = "page">
+        <div  class="row VCentered">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <div class="heading-container">
+                    <h1 id = "logo-text" class= "text-center" style = "font-weight:900">NetVis</h1>
+                    <h4 class = " text-center" style = "font-size:16px;">by Group 10</h4>
+                    <br>
+                    <h4 class = "text-center" style = "font-size:20px;">A visulization tool that makes your life whole a lot easier.</h4>
+                </div>
+                <br>
+                <form id = "uploadForm" action="/" method="post" enctype="multipart/form-data" onsubmit = "checkFormat();">
+                    <div class="custom-file block-center">
+                        <input type="file" id="userDataset" class="custom-file-input block-center" name="userDataset" >
+                        <label class="custom-file-label" for="userDataset">Choose file</label>
+                    </div>
+                    <br>
+                    <br>
+                    <input  id = "uploadBtn" class="btn VCentered text-center block-center" type="submit" value="Upload!" name="submit">
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </section>
+
+    <div id = "doc-section" class = "page">
+        <h1 class = "VCentered text-center display-4">Documentation</h1>
+    </div>
+    <section id = "about-section" class = "page">
+        <div class = "row VCentered">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-2">
+                <div class="avatar-card card VCentered" style="width:100%">
+                    <img class="avatar-img card-img-top" src="{{ url_for('static', filename='images/avatar.png') }}" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Stijn Nooijen</h4>
+                        <p class="card-text text-center">Computer Science</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="avatar-card card VCentered" style="width:100%">
+                    <img class="avatar-img card-img-top" src="{{ url_for('static', filename='images/jimmy.jpg') }}" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Longxiang Qian</h4>
+                        <p class="card-text text-center">Computer Science</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="avatar-card card VCentered" style="width:100%">
+                    <img class="avatar-img card-img-top" src="{{ url_for('static', filename='images/alwin.jpeg') }}" alt="Card image">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Alwin L. V.</h4>
+                        <p class="card-text text-center">Psychology & Technology</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!--Uploading script-->
+    <script>
+        // To show file name in input bar
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+
+        //Front-end file type validation
+        $('#uploadForm').submit(function (evt) {
+            
+            var filePath = $("#userDataset").prop("value");
+            //Strictly checking the last 3 characters of the file
+            var format = filePath.substring(filePath.length, filePath.length - 3);
+            if (format != "csv"){
+                alert("Please submit a valid file(.csv).");
+                console.log(format);
+                evt.preventDefault();   
+            }
+        });
+    </script> 
+    
+{% endblock %}

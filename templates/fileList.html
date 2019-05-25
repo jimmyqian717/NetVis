@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+
+<section class="page fileList-section mx-auto">
+    <h3 class="text-center VCentered display-3 ">{{ heading }}</h3>
+    <div class="row fileList-row">
+        
+        {% for file in files %}
+            <div class="file-card card col-sm-3 my-5">
+                <img class="card-img card-img-top mx-auto" src="{{ url_for('static', filename='images/file.png') }}" alt="Card image">
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{ file[0:-4] }}</h4>
+                </div>
+                <a href="/visualization/{{ file }}" class="plot-btn text-center mx-auto mt-2">Visualize!</a>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+        
+
+    
+{% endblock %}

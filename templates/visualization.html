@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+   
+    <div class = "display-block mx-auto" style = "width:90vw;margin-top:10vh">
+    {% for div in divs %}
+
+        <div class="wrapper" style = "width:49%; display:inline-block">
+            {{ div|safe }}
+        </div>
+    {% endfor %}
+    </div>
+
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-1.1.0.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-1.1.0.min.js"></script>
+    {{ script|safe }}
+    
+{% endblock %}

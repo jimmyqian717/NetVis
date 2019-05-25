@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+    <div class="jumbotron mt-5">
+        <ul class="list-group">
+            {% for file in files %}
+                <li class="list-group-item"><a href="{{ file }}">{{ file }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+{% endblock %}
